@@ -8,7 +8,7 @@ public class Device {
     public Device (int serialNumber, int cpuCapacity, int length){
         this.serialNumber = serialNumber;
         this.cpuCapacity = cpuCapacity;
-        tasks = tasks[length];
+        //tasks = tasks[length];
 
     }
 
