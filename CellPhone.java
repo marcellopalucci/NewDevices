@@ -49,6 +49,15 @@ public class CellPhone extends Device{
     }
 
     @Override
+    public boolean processTask(Task task){
+        if(super.processTask(task)){
+            tasksCompleted ++;
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) return false;
         CellPhone otherCellPhone = (CellPhone) obj;

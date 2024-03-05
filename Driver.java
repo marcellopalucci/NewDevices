@@ -15,9 +15,5 @@ public class Driver {
         samsung.processTask(task3);
 
         System.out.println(samsung.toString());
-
-
-
-
     }
 }
