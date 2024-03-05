@@ -71,7 +71,7 @@ public class Laptop extends Device {
 
     @Override
     public String toString(){
-        return super.toString() + String.format(" This laptop %s have overclocking.", (overclockable) ? "does" : "does not");
+        return super.toString() + String.format(" This laptop %s have overclocking.\n", (overclockable) ? "does" : "does not");
     }
 
 }

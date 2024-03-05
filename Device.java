@@ -16,7 +16,7 @@ public abstract class Device{
     public Device (int serialNumber, int cpuCapacity, int length){
         this.serialNumber = serialNumber;
         this.cpuCapacity = cpuCapacity;
-        this.tasks = new Task[]{tasks[length]};
+        this.tasks = new Task[length];
         this.cpuRemaining = cpuCapacity;
     }
 
@@ -52,9 +52,9 @@ public abstract class Device{
     public boolean processTask(Task task){
         if (task == null) return false;
         for (int i = 0; i < this.tasks.length; i++){
-            if (tasks[i].equals(task)){
+            if (tasks[i] == task){
                 cpuRemaining += tasks[i].getCpuCost();
-                System.out.printf("Processed: %s", tasks[i].toString());
+                System.out.printf("Processed: %s\n", tasks[i].toString());
                 tasks[i] = null;
                 return true;
             }
@@ -62,7 +62,6 @@ public abstract class Device{
         return false;
     }
 
-    //// java docs - check
     @Override
     public boolean equals (Object obj){
         if (obj == null)
@@ -75,7 +74,6 @@ public abstract class Device{
                 cpuRemaining == otherDevice.cpuRemaining);
     }
 
-    /////java docs
     @Override
     public String toString(){
         return String.format("Device with serial number %d has %d of %d CPU remaining.", serialNumber,

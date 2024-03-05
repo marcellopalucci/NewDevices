@@ -58,7 +58,7 @@ public class CellPhone extends Device{
 
     @Override
     public String toString() {
-        return super.toString() + String.format(" It has completed %d tasks.", tasksCompleted);
+        return super.toString() + String.format(" It has completed %d tasks.\n", tasksCompleted);
     }
 
 }
