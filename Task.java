@@ -25,8 +25,8 @@ public final class Task {
             return false;
         }
         Task otherTask = (Task) obj;
-        return (this.name == otherTask.name
-                && this.cpuCost == otherTask.cpuCost);
+        return (name == otherTask.name
+                && cpuCost == otherTask.cpuCost);
     }
     @Override
     public int hashCode() {
@@ -38,7 +38,7 @@ public final class Task {
 
     @Override
     public String toString() {
-        return String.format("%s has a CPU cost of %d", name, cpuCost);
+        return String.format("%s has a CPU cost of %d\n", name, cpuCost);
     }
 
     /**
