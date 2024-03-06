@@ -1,5 +1,9 @@
 package NewDevices;
 
+/**
+ * @author mpalucci3
+ * @version 1.00
+ */
 public class Task {
     private final String name;
     private final int cpuCost;
@@ -10,34 +14,34 @@ public class Task {
      * @param name String representing description of the task
      * @param cpuCost int representing the cost of processing power for this task
      */
-    public Task(String name, int cpuCost){
+    public Task(String name, int cpuCost) {
         //check this!!!
         this.name = isValidName(name);
         this.cpuCost = isValidCPUcost(cpuCost);
     }
 
     @Override
-    public boolean equals (Object obj){
+    public boolean equals(Object obj) {
         return (this == obj);
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("%s has a CPU cost of %d", name, cpuCost);
     }
 
     /**
-     * Method (3) getter which returns the cpuCost
+     * Method (3) getter which returns the cpuCost.
      * @return int representing the cost of processing power for this task
      */
     public int getCpuCost() {
         return cpuCost;
     }
 
-    private String isValidName(String nameValidator){
+    private String isValidName(String nameValidator) {
         return (nameValidator != null) ? nameValidator : "GEN_TASK";
     }
-    private int isValidCPUcost (int cpuCostValidator){
+    private int isValidCPUcost(int cpuCostValidator) {
         return (cpuCostValidator >= 8) ? cpuCostValidator : 8;
     }
 

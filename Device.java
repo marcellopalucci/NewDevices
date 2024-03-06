@@ -1,10 +1,14 @@
 package NewDevices;
 
-public abstract class Device{
-    final private int serialNumber;
-    final protected int cpuCapacity;
+/**
+ * @author mpalucci3
+ * @version 1.01
+ */
+public abstract class Device {
+    private final int serialNumber;
+    protected final int cpuCapacity;
     protected int cpuRemaining;
-    protected Task [] tasks;
+    protected Task[] tasks;
 
     /**
      * Constructor (1) that takes in and int serialNumber, int cpuCapacity, and int length,
@@ -13,7 +17,7 @@ public abstract class Device{
      * @param cpuCapacity int representing the total amount of processing power for the device
      * @param length int representing the number of tasks in the task array
      */
-    public Device (int serialNumber, int cpuCapacity, int length){
+    public Device(int serialNumber, int cpuCapacity, int length) {
         this.serialNumber = serialNumber;
         this.cpuCapacity = cpuCapacity;
         this.tasks = new Task[length];
@@ -26,7 +30,7 @@ public abstract class Device{
      * @param serialNumber int representing a unique identifier for the device
      * @param length int representing the number of tasks in the task array
      */
-    public Device (int serialNumber, int length){
+    public Device(int serialNumber, int length) {
         this(serialNumber, 512, length);
     }
 
@@ -47,12 +51,14 @@ public abstract class Device{
     /**
      * Method (3) Takes in a Task object and returns a boolean of whether the task was processed successfully.
      * @param task Task representing a device's tasks
-     * @return
+     * @return boolean representing if a task was processed
      */
-    public boolean processTask(Task task){
-        if (task == null) return false;
-        for (int i = 0; i < this.tasks.length; i++){
-            if (tasks[i] == task){
+    public boolean processTask(Task task) {
+        if (task == null) {
+            return false;
+        }
+        for (int i = 0; i < this.tasks.length; i++) {
+            if (tasks[i] == task) {
                 cpuRemaining += tasks[i].getCpuCost();
                 System.out.printf("Processed: %s\n", tasks[i].toString());
                 tasks[i] = null;
@@ -63,19 +69,20 @@ public abstract class Device{
     }
 
     @Override
-    public boolean equals (Object obj){
-        if (obj == null)
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
+        }
 
         Device otherDevice = (Device) obj;
 
-        return (serialNumber == otherDevice.serialNumber &&
-                cpuCapacity == otherDevice.cpuCapacity &&
-                cpuRemaining == otherDevice.cpuRemaining);
+        return (serialNumber == otherDevice.serialNumber
+                && cpuCapacity == otherDevice.cpuCapacity
+                && cpuRemaining == otherDevice.cpuRemaining);
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("Device with serial number %d has %d of %d CPU remaining.", serialNumber,
                 cpuRemaining, cpuCapacity);
     }

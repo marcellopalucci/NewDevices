@@ -1,6 +1,14 @@
 package NewDevices;
 
+/**
+ * @author mpalucci3
+ * @version 1.05
+ */
 public class Driver {
+    /**
+     * Main driver method, basically to test classe.
+     * @param args no args used in this method
+     */
     public static void main(String[] args) {
         CellPhone iPhone = new CellPhone(1234, 512, 4);
         CellPhone samsung = new CellPhone(4567, 1024, 20);
