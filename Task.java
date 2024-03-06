@@ -21,7 +21,19 @@ public final class Task {
 
     @Override
     public boolean equals(Object obj) {
-        return (this == obj);
+        if (obj == null) {
+            return false;
+        }
+        Task otherTask = (Task) obj;
+        return (this.name == otherTask.name
+                && this.cpuCost == otherTask.cpuCost);
+    }
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + (name == null ? 0 : name.hashCode());
+        result = 31 * result + cpuCost;
+        return result;
     }
 
     @Override
@@ -30,7 +42,7 @@ public final class Task {
     }
 
     /**
-     * Method (3) getter which returns the cpuCost.
+     * Method (3) getter method which returns the cpuCost.
      * @return int representing the cost of processing power for this task
      */
     public int getCpuCost() {

@@ -43,7 +43,8 @@ public class CellPhone extends Device {
             for (int i = 0; i < super.tasks.length; i++) {
                 if (tasks[i] == null) {
                     tasks[i] = task;
-                    super.cpuRemaining -= tasks[i].getCpuCost();
+                    super.cpuRemaining = (super.cpuRemaining - tasks[i].getCpuCost() >= 0)
+                            ? super.cpuRemaining - tasks[i].getCpuCost() : 0;
                     return true;
                 }
             }
@@ -53,7 +54,7 @@ public class CellPhone extends Device {
 
     @Override
     public boolean processTask(Task task) {
-        if (super.processTask(task)) {
+        if (task != null && super.processTask(task)) {
             tasksCompleted++;
             return true;
         }
@@ -67,9 +68,14 @@ public class CellPhone extends Device {
         }
         CellPhone otherCellPhone = (CellPhone) obj;
 
-        return tasksCompleted == otherCellPhone.tasksCompleted && super.equals(obj);
+        return (tasksCompleted == otherCellPhone.tasksCompleted && super.equals(obj));
     }
-
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + tasksCompleted;
+        return result;
+    }
     @Override
     public String toString() {
         return super.toString() + String.format(" It has completed %d tasks.\n", tasksCompleted);

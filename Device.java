@@ -57,7 +57,7 @@ public abstract class Device {
             return false;
         }
         for (int i = 0; i < this.tasks.length; i++) {
-            if (tasks[i] == task) {
+            if (tasks[i] != null && tasks[i].equals(task)) {
                 cpuRemaining += tasks[i].getCpuCost();
                 System.out.printf("Processed: %s\n", tasks[i].toString());
                 tasks[i] = null;
@@ -79,7 +79,17 @@ public abstract class Device {
                 && cpuCapacity == otherDevice.cpuCapacity
                 && cpuRemaining == otherDevice.cpuRemaining);
     }
-
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + serialNumber;
+        result = 31 * result + cpuCapacity;
+        result = 31 * result + cpuRemaining;
+        for (int i = 0; i < tasks.length; i++) {
+            result = 31 * result + ((tasks[i] == null) ? 0 : tasks[i].hashCode());
+        }
+        return result;
+    }
     @Override
     public String toString() {
         return String.format("Device with serial number %d has %d of %d CPU remaining.", serialNumber,

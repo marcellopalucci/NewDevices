@@ -48,8 +48,18 @@ public class Laptop extends Device {
     }
     @Override
     public boolean canAddTask(Task task) {
-        if (overclockable && super.cpuRemaining > task.getCpuCost()) {
-
+        int emptyslotCounter = 0;
+        for (int i = 0; i < super.tasks.length; i++) {
+            if (tasks[i] == null) {
+                emptyslotCounter++;
+            }
+        }
+        if ((super.cpuRemaining > task.getCpuCost())
+                && (emptyslotCounter - bufferSlotsRequired(super.cpuRemaining) > 0)) {
+            return true;
+        } else if ((super.cpuRemaining < task.getCpuCost()) && overclockable) {
+            return (super.cpuRemaining * 5 / 4 > task.getCpuCost() && (emptyslotCounter
+                    - bufferSlotsRequired(super.cpuRemaining) > 0));
         }
         return false;
     }
@@ -74,11 +84,17 @@ public class Laptop extends Device {
         return this.overclockable == otherLaptop.overclockable
                 && super.equals(obj);
     }
-
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        if (overclockable) {
+            result = 31 * result;
+        }
+        return result;
+    }
     @Override
     public String toString() {
         return super.toString() + String.format(" This laptop %s have overclocking.\n",
                 (overclockable) ? "does" : "does not");
     }
-
 }
