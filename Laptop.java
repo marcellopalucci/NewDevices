@@ -54,12 +54,15 @@ public class Laptop extends Device {
                 emptyslotCounter++;
             }
         }
-        if ((super.cpuRemaining > task.getCpuCost())
-                && (emptyslotCounter - bufferSlotsRequired(super.cpuRemaining) > 0)) {
+
+        if ( (emptyslotCounter - bufferSlotsRequired(cpuRemaining) <= 0)){
+            return false;
+        }
+
+        if ((cpuRemaining > task.getCpuCost())) {
             return true;
-        } else if ((super.cpuRemaining < task.getCpuCost()) && overclockable) {
-            return (super.cpuRemaining * 5 / 4 > task.getCpuCost() && (emptyslotCounter
-                    - bufferSlotsRequired(super.cpuRemaining) > 0));
+        } else if (cpuRemaining < task.getCpuCost() && overclockable) {
+            return cpuRemaining * cpuCapacity / 4 >= task.getCpuCost();
         }
         return false;
     }
