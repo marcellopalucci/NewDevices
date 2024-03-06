@@ -38,7 +38,7 @@ public final class Task {
 
     @Override
     public String toString() {
-        return String.format("%s has a CPU cost of %d\n", name, cpuCost);
+        return String.format("%s has CPU cost of %d", name, cpuCost);
     }
 
     /**

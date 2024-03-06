@@ -59,7 +59,7 @@ public abstract class Device {
         for (int i = 0; i < this.tasks.length; i++) {
             if (tasks[i] != null && tasks[i].equals(task)) {
                 cpuRemaining += tasks[i].getCpuCost();
-                System.out.printf("Processed: %s", tasks[i].toString());
+                System.out.printf("Processed: %s\n", tasks[i].toString());
                 tasks[i] = null;
                 return true;
             }
