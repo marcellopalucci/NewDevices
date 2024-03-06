@@ -55,7 +55,7 @@ public class Laptop extends Device {
             }
         }
 
-        if ( (emptyslotCounter - bufferSlotsRequired(cpuRemaining) <= 0)){
+        if ((emptyslotCounter - bufferSlotsRequired(cpuRemaining) <= 0)) {
             return false;
         }
 
