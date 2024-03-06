@@ -37,16 +37,19 @@ public class Driver {
         Laptop razr4090 = new Laptop(1234532, 4048, 128, true);
         Laptop razr4080 = new Laptop(1234532, 4048, 128, true);
 
+        //2 addtasks to at least one laptop
         macbook.addTask(task1);
         macbook.addTask(task2);
-
         razr4090.addTask(task1);
         razr4080.addTask(task1);
 
+        //at least 1 processtask
         razr4080.processTask(task1);
         razr4090.processTask(task2);
 
+        //at least 1 tostring
         System.out.println(razr4080.toString());
+        //check two laptops if they are equal
         System.out.println(razr4080.equals(razr4090));
 
     }
