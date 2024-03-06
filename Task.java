@@ -3,7 +3,7 @@
  * @author mpalucci3
  * @version 1.00
  */
-public class Task {
+public final class Task {
     private final String name;
     private final int cpuCost;
 
